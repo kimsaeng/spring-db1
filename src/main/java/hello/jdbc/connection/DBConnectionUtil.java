@@ -11,9 +11,11 @@ import static hello.jdbc.connection.ConnectionConst.*;
 @Slf4j
 public class DBConnectionUtil {
 
-    public static Connection getConnectino() {
+    public static Connection getConnection() {
         try {
-            DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            Connection connection = DriverManager.getConnection(URL, USERNAME, PASSWORD);
+            log.info("get connection={}, class={}", connection, connection.getClass());
+            return connection;
         } catch (SQLException e) {
             throw new IllegalStateException(e);
         }
